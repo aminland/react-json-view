@@ -196,7 +196,7 @@ class rjvObject extends React.Component {
                 >
                 {this.getBraceStart(object_type, expanded)}
                 {expanded
-                    ? this.getObjectContent(depth, src, {theme, iconStyle, namespace:namespace.concat(name), ...rest})
+                    ? this.getObjectContent(depth, src, {theme, iconStyle, namespace:name ? namespace.concat(name): namespace, ...rest})
                     : this.getEllipsis()
                 }
                 <span class="brace-row">
