@@ -3,7 +3,7 @@ import Theme from './../themes/getStyle';
 
 export default function getObjectName(props) {
     const {
-        parent_type, namespace, theme, jsvRoot, name
+        parent_type, namespace, theme, jsvRoot, name, onClick
     } = props;
 
     const display_name = props.name ? props.name : '';
@@ -12,14 +12,14 @@ export default function getObjectName(props) {
         return (<span />);
     } else if (parent_type == 'array') {
         return (
-            <span {...Theme(theme, 'array-key')} key={namespace}>
+            <span {...Theme(theme, 'array-key')} key={namespace} onClick={onClick}>
                 <span class="array-key">{display_name}</span>
                 <span {...Theme(theme, 'colon')}>:</span>
             </span>
         );
     } else {
         return (
-            <span {...Theme(theme, 'object-name')} key={namespace}>
+            <span {...Theme(theme, 'object-name')} key={namespace} onClick={onClick}>
                 <span class="object-key">
                     <span style={{verticalAlign:'top'}}>"</span>
                     <span>{display_name}</span>

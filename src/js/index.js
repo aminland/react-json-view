@@ -42,6 +42,7 @@ export default class extends React.Component {
         collapsed: false,
         collapseStringsAfterLength: false,
         shouldCollapse: false,
+        collapseOnNameClick: true,
         groupArraysAfterLength: 100,
         indentWidth: 4,
         enableClipboard: true,
@@ -51,6 +52,7 @@ export default class extends React.Component {
         onDelete: false,
         onAdd: false,
         onSelect: false,
+        onRowSelect: false,
         onMouseEnter: false,
         onMouseLeave: false,
         iconStyle: "triangle",
@@ -113,7 +115,7 @@ export default class extends React.Component {
                 'react-json-view error:',
                 'theme prop must be a theme name or valid base-16 theme object.',
                 'defaulting to "rjv-default" theme'
-            );
+            ); 
             this.state.theme = 'rjv-default';
         }
 
