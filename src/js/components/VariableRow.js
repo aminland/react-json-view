@@ -21,8 +21,6 @@ export default ({
   variable,
   ...props
 }) => {
-  console.log(namespace);
-
   return <div
     style={props.style}
     class={props.class}
