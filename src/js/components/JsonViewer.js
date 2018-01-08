@@ -5,7 +5,6 @@ import ArrayGroup from './ArrayGroup';
 export default class extends React.Component {
     render = () => {
         const {props} = this;
-        const namespace = [props.name];
         let ObjectComponent = JsonObject
 
         if (props.groupArraysAfterLength && props.src.length > props.groupArraysAfterLength) {
@@ -16,7 +15,7 @@ export default class extends React.Component {
             <div class="pretty-json-container object-container" >
                 <div class="object-content">
                     <ObjectComponent
-                    namespace={namespace}
+                    namespace={[]}
                     depth={0}
                     jsvRoot={true}
                     {...props} />

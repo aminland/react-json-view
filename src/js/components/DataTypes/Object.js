@@ -196,7 +196,7 @@ class rjvObject extends React.Component {
                 >
                 {this.getBraceStart(object_type, expanded)}
                 {expanded
-                    ? this.getObjectContent(depth, src, {theme, iconStyle, ...rest})
+                    ? this.getObjectContent(depth, src, {theme, iconStyle, namespace:namespace.concat(name), ...rest})
                     : this.getEllipsis()
                 }
                 <span class="brace-row">
@@ -232,7 +232,7 @@ class rjvObject extends React.Component {
                         depth={depth + DEPTH_INCREMENT}
                         name={variable.name}
                         src={variable.value}
-                        namespace={namespace.concat(variable.name)}
+                        namespace={namespace}
                         parent_type={object_type}
                         {...props}
                     />);
@@ -248,7 +248,7 @@ class rjvObject extends React.Component {
                         depth={depth + DEPTH_INCREMENT}
                         name={variable.name}
                         src={variable.value}
-                        namespace={namespace.concat(variable.name)}
+                        namespace={namespace}
                         type="array"
                         parent_type={object_type}
                         {...props}

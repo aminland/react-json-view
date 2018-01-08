@@ -16,7 +16,7 @@ ReactDom.render(
             src={getExampleJson1()}
             collapseStringsAfterLength={12}
             onEdit={e => {
-                console.log("edit callback", e)
+                sog("edit callback", e)
                 if (e.new_value == "error") {
                     return false
                 }
@@ -178,7 +178,7 @@ function getExampleJson1() {
         integer: 42,
         empty_array: [],
         empty_object: {},
-        array: [1, 2, 3, "test"],
+        array: [1, 2, 3, "test", getExampleArray()],
         float: -2.757,
         undefined_var: undefined,
         parent: {
