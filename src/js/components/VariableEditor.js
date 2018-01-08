@@ -104,6 +104,7 @@ class VariableEditor extends React.Component {
                                           ...variable,
                                           namespace: location
                                       })
+                                      e.stopPropagation();
                                   }
                               }
                     }

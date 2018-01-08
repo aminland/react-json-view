@@ -144,12 +144,17 @@ class rjvObject extends React.Component {
 
         return (
             <span>
-                <span onClick={(e) => {this.toggleCollapsed()}}
-                    {...Theme(theme, 'brace-row')}>
-                    <div class="icon-container" {...Theme(theme, 'icon-container')}>
+                <span {...Theme(theme, 'brace-row')}>
+                    <div 
+                        class="icon-container" 
+                        onClick={(e) => {this.toggleCollapsed()}}
+                        {...Theme(theme, 'icon-container')}>
                         <IconComponent {...{theme, iconStyle}}/>
                     </div>
-                    <ObjectName {...this.props} />
+                    <ObjectName 
+                        {...this.props} 
+                        onClick={(e) => { this.props.collapseOnNameClick && this.toggleCollapsed()}} 
+                    />
                     <span {...Theme(theme, 'brace')}>
                         {object_type == 'array' ? '[' : '{'}
                     </span>

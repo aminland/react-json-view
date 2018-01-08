@@ -56,6 +56,11 @@ ReactDom.render(
             theme="railscasts"
             validationMessage="You're doing something wrong."
             collapseStringsAfterLength={15}
+            collapseOnNameClick={false}
+            onSelect={e => {
+                console.log("select callback", e)
+                console.log(e.namespace)
+            }}
             onEdit={e => {
                 console.log(e)
                 if (e.new_value == "error") {
