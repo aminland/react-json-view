@@ -157,7 +157,11 @@ ReactDom.render(
             collapsed={false}
             name="large_array"
             groupArraysAfterLength={50}
-            src={getExampleJson4()}
+            onSelect={e => {
+                console.log(e.namespace, e.name)
+            }}
+            collapseOnNameClick={false}
+            src={{nested_array: getExampleJson4()}}
         />
     </div>,
     document.getElementById("app-container")

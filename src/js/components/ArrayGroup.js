@@ -1,6 +1,7 @@
 import React from 'react';
 import Theme from './../themes/getStyle';
 
+import VariableRow from './VariableRow';
 import VariableMeta from './VariableMeta';
 import ObjectName from './ObjectName'
 import ObjectComponent from './DataTypes/Object'
@@ -37,9 +38,9 @@ export default class extends React.Component {
     }
 
     render() {
-        const { 
+        let { 
             src, groupArraysAfterLength, depth, 
-            name, theme, jsvRoot, namespace, parent_type,
+            name, theme, jsvRoot, parent_type, namespace,
             ...rest
         } = this.props
 
@@ -53,14 +54,17 @@ export default class extends React.Component {
 
         const size = groupArraysAfterLength
         const groups = Math.ceil(src.length / size)
+        console.log (this.props.namespace, name)
+        namespace = this.props.namespace.concat(name);
 
-        return (<div class='object-key-val'
+        return (<VariableRow class='object-key-val'
                     {...Theme(theme, jsvRoot ? 'jsv-root' : 'objectKeyVal', {paddingLeft: object_padding_left})}
+                    {...{namespace, name}}
                 >
             <ObjectName {...this.props} />
 
             <span>
-                <VariableMeta size={src.length} {...this.props}/>
+                <VariableMeta size={src.length} {...this.props} {...{namespace, name}}/>
             </span>
             {[...Array(groups)].map((_, i) => 
                 <div key={i} class='object-key-val array-group' {...Theme(theme, 'objectKeyVal', {
@@ -76,7 +80,6 @@ export default class extends React.Component {
                     {!!this.state.expanded[i] ? 
                         <ObjectComponent key={name + i}
                             depth={0}
-                            name={false}
                             collapsed={false}
                             groupArraysAfterLength={size}
                             index_offset={i * size}
@@ -104,7 +107,7 @@ export default class extends React.Component {
                 </span>
                 </div>
             )}
-            </div>
+            </VariableRow>
         );
     }
 
